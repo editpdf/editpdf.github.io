@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PdfEditor from '../components/PdfEditor.jsx';
 ---
 
-<Layout title="EditPDF | Fast, Private PDF Editor">
+<Layout title="Free Online PDF Editor & Form Filler | Secure, No Uploads">
 	<main class="min-h-screen bg-stone-50 flex flex-col items-center selection:bg-red-200 selection:text-red-900">
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
@@ -83,11 +83,28 @@ import PdfEditor from '../components/PdfEditor.jsx';
 			</div>
 		</header>
 
+		{/* Header Area & H1 */}
+		<div class="w-full max-w-7xl mx-auto pt-10 px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+			<div class="max-w-3xl">
+				<h1 class="text-3xl font-bold tracking-tight text-stone-900">Free Secure PDF Editor - Fill Forms & Sign Instantly</h1>
+				<p class="text-stone-500 mt-3 text-sm">Edit PDF files without uploading to any server. Everything happens locally in your browser.</p>
+			</div>
+		</div>
+
 		{/* Editor Area */}
-		<div id="editor" class="w-full max-w-7xl mx-auto min-h-[calc(100vh-4rem)] flex-grow flex flex-col p-4 sm:p-6 lg:p-8">
+		<div id="editor" class="w-full max-w-7xl mx-auto min-h-[calc(100vh-12rem)] flex-grow flex flex-col p-4 sm:p-6 lg:p-8">
 			<PdfEditor client:only="react" />
 		</div>
 		
+		{/* How it Works Section */}
+		<section class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-stone-200">
+			<h2 class="text-2xl font-bold text-stone-900 mb-6 text-center tracking-tight">How our Secure PDF Editor Works</h2>
+			<div class="bg-white border border-stone-200 p-8 text-stone-600 leading-relaxed text-sm shadow-sm space-y-4">
+				<p>Looking to edit PDF forms easily without compromising your privacy? Our free online PDF editor lets you add text, draw your signature, and fill out documents instantly.</p>
+				<p>Most online PDF tools force you to upload your sensitive files (like bank statements or contracts) to their remote servers. We take a different approach. Because everything runs locally right inside your web browser using modern web technologies, it is the most secure PDF form filler available - absolutely <strong>no server uploads required.</strong></p>
+			</div>
+		</section>
+
 		{/* FAQ Section */}
 		<section id="faq" class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 			<h2 class="text-2xl font-bold text-stone-900 mb-8 text-center tracking-tight">Frequently Asked Questions</h2>
