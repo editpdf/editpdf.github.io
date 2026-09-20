@@ -1,11 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import PdfEditor from '../components/PdfEditor.jsx';
-import { ui } from '../i18n/ui';
-import { useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PdfEditor from '../../components/PdfEditor.jsx';
+import { languages, defaultLang, ui, type Locale } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = 'en';
+export function getStaticPaths() {
+	return (Object.keys(languages) as Locale[])
+		.filter((l) => l !== defaultLang)
+		.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Locale };
 const t = useTranslations(lang);
 const dict = ui[lang];
 ---
@@ -18,7 +24,7 @@ const dict = ui[lang];
 				{
 					"@type": "WebApplication",
 					"name": t('brand.name'),
-					"url": "https://editpdf.github.io/",
+					"url": `https://editpdf.github.io/${lang}/`,
 					"description": t('seo.description'),
 					"applicationCategory": "UtilitiesApplication",
 					"operatingSystem": "Any",

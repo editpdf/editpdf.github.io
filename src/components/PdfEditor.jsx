@@ -22,7 +22,8 @@ const TOOLS = {
 
 const PDF_SCALE = 1.5;
 
-export default function PdfEditor() {
+export default function PdfEditor({ dict = {} }) {
+  const t = (key, fallback) => dict[key] || fallback;
   const [file, setFile] = useState(null);
   const [fileBuffer, setFileBuffer] = useState(null);
   const [pdfDoc, setPdfDoc] = useState(null);
@@ -692,13 +693,13 @@ export default function PdfEditor() {
   // --- UI Renderers ---
   if (!file) {
     return (
-      <div className="max-w-4xl mx-auto mt-6 md:mt-12 p-4 md:p-8 bg-white rounded-none shadow-none border-stone-100 border border-stone-200 text-center mx-4 md:mx-auto">
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 px-4 border-2 border-dashed border-stone-300 rounded-none bg-stone-50 hover:bg-stone-100 transition-colors">
+      <div className="max-w-4xl mx-auto mt-6 md:mt-12 p-4 md:p-8 bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 text-center mx-4 md:mx-auto rounded-xl shadow-sm transition-colors">
+        <div className="flex flex-col items-center justify-center py-12 md:py-16 px-4 border-2 border-dashed border-stone-300 dark:border-slate-700 rounded-lg bg-stone-50 dark:bg-slate-950/60 hover:bg-stone-100 dark:hover:bg-slate-900 transition-colors">
           <UploadCloud className="w-12 h-12 text-red-600 mb-4" />
-          <h2 className="text-2xl font-bold text-stone-800 mb-2">Upload a PDF to start editing</h2>
-          <p className="text-stone-500 mb-6 max-w-md">Your files are processed securely in your browser and are never uploaded to any server.</p>
-          <label className="cursor-pointer inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-medium rounded-none hover:bg-red-700 transition-colors shadow-none border-stone-100">
-            <span>Select PDF File</span>
+          <h2 className="text-2xl font-bold text-stone-900 dark:text-white mb-2">{t('editor.uploadPrompt', 'Upload a PDF to start editing')}</h2>
+          <p className="text-stone-500 dark:text-stone-400 mb-6 max-w-md text-sm">{t('editor.uploadSub', 'Your files are processed securely in your browser and are never uploaded to any server.')}</p>
+          <label className="cursor-pointer inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors shadow-sm">
+            <span>{t('editor.selectPdf', 'Select PDF File')}</span>
             <input type="file" className="hidden" accept="application/pdf" onChange={handleFileUpload} />
           </label>
         </div>
@@ -714,52 +715,52 @@ export default function PdfEditor() {
       {/* Toolbar */}
       <div className="w-full lg:w-64 flex-shrink-0">
         {/* Night Mode Toggle */}
-        <div className="bg-white rounded-none shadow-none border-stone-100 border border-stone-200 p-4 mb-4 flex items-center justify-between">
-          <span className="font-semibold text-stone-800 text-sm">Eye Care Mode</span>
-          <button aria-label="Toggle Night Mode"
+        <div className="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 rounded-xl p-4 mb-4 flex items-center justify-between shadow-sm transition-colors">
+          <span className="font-semibold text-stone-800 dark:text-stone-200 text-sm">{t('editor.eyeCare', 'Eye Care Mode')}</span>
+          <button aria-label={t('editor.eyeCare', 'Toggle Night Mode')}
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${isDarkMode ? 'bg-red-600' : 'bg-stone-200'}`}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none cursor-pointer ${isDarkMode ? 'bg-red-600' : 'bg-stone-200 dark:bg-slate-700'}`}
           >
-            <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isDarkMode ? 'transtone-x-6' : 'transtone-x-1'}`} />
+            <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${isDarkMode ? 'translate-x-6' : 'translate-x-1'}`} />
           </button>
         </div>
 
         {/* View Mode Toggle */}
-        <div className="bg-white rounded-none shadow-none border-stone-100 border border-stone-200 p-2 mb-4 flex">
+        <div className="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 rounded-xl p-1.5 mb-4 flex shadow-sm gap-1 transition-colors">
           <button
             onClick={() => setViewMode('edit')}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-none text-sm font-medium transition-colors ${viewMode === 'edit' ? 'bg-red-50 text-red-700' : 'text-stone-500 hover:bg-stone-50'}`}
+            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${viewMode === 'edit' ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 font-semibold' : 'text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-slate-800'}`}
           >
-            <Edit3 className="w-4 h-4" /> Edit
+            <Edit3 className="w-4 h-4" /> {t('editor.viewEdit', 'Edit')}
           </button>
           <button
             onClick={() => { commitTextInput(); setViewMode('organize'); }}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-none text-sm font-medium transition-colors ${viewMode === 'organize' ? 'bg-red-50 text-red-700' : 'text-stone-500 hover:bg-stone-50'}`}
+            className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${viewMode === 'organize' ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 font-semibold' : 'text-stone-500 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-slate-800'}`}
           >
-            <Grid3X3 className="w-4 h-4" /> Organize
+            <Grid3X3 className="w-4 h-4" /> {t('editor.viewOrganize', 'Organize')}
           </button>
         </div>
 
-        <div className={`bg-white rounded-none shadow-none border-stone-100 border border-stone-200 p-4 lg:sticky lg:top-24 ${viewMode === 'organize' ? 'opacity-50 pointer-events-none' : ''}`}>
-          <h3 className="font-semibold text-stone-800 mb-4 px-2">Tools</h3>
+        <div className={`bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 rounded-xl p-4 shadow-sm lg:sticky lg:top-24 transition-colors ${viewMode === 'organize' ? 'opacity-50 pointer-events-none' : ''}`}>
+          <h3 className="font-semibold text-stone-800 dark:text-stone-200 mb-4 px-2">Tools</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-col gap-2">
             <button 
               onClick={() => { commitTextInput(); setTool(TOOLS.NONE); }}
-              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.NONE ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
+              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.NONE ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent'}`}
             >
-              <MousePointer className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">Select</span>
+              <MousePointer className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolSelect', 'Select')}</span>
             </button>
             <div className={`flex flex-col gap-2 ${tool === TOOLS.TEXT ? 'col-span-full' : ''}`}>
               <button 
                 onClick={() => { commitTextInput(); setTool(tool === TOOLS.TEXT ? TOOLS.NONE : TOOLS.TEXT); }}
-                className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.TEXT ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
+                className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.TEXT ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent'}`}
               >
-                <Type className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">Add Text</span>
+                <Type className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolText', 'Add Text')}</span>
               </button>
               {tool === TOOLS.TEXT && (
-                <div className="flex flex-col gap-2 px-4 py-2 bg-stone-50 rounded-none border border-stone-200">
+                <div className="flex flex-col gap-2 px-4 py-2 bg-stone-50 dark:bg-slate-800/80 rounded-lg border border-stone-200 dark:border-slate-700">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-stone-600">Size:</span>
+                    <span className="text-sm font-medium text-stone-600 dark:text-stone-300">{t('editor.fontSize', 'Size')}:</span>
                     <select
                       value={textSize}
                       onChange={(e) => {
@@ -769,7 +770,7 @@ export default function PdfEditor() {
                           setTextInput(prev => ({ ...prev, size: newSize }));
                         }
                       }}
-                      className="flex-1 p-1 bg-white border border-stone-200 rounded text-sm outline-none text-stone-700"
+                      className="flex-1 p-1 bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 rounded text-sm outline-none text-stone-700 dark:text-stone-200"
                     >
                       {[10, 12, 14, 16, 18, 24, 32, 48].map(size => (
                         <option key={size} value={size}>{size}px</option>
@@ -782,8 +783,8 @@ export default function PdfEditor() {
                         setIsTextBold(!isTextBold);
                         if (textInput) setTextInput(prev => ({ ...prev, isBold: !prev.isBold }));
                       }}
-                      className={`flex-1 p-1.5 rounded border transition-colors flex items-center justify-center ${isTextBold ? 'bg-red-100 border-red-300 text-red-700' : 'bg-white border-stone-200 text-stone-600 hover:bg-stone-100'}`}
-                      aria-label="Bold" title="Bold"
+                      className={`flex-1 p-1.5 rounded border transition-colors flex items-center justify-center cursor-pointer ${isTextBold ? 'bg-red-100 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-red-700 dark:text-red-400' : 'bg-white dark:bg-slate-900 border-stone-200 dark:border-slate-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-slate-800'}`}
+                      aria-label={t('editor.bold', 'Bold')} title={t('editor.bold', 'Bold')}
                     >
                       <Bold className="w-4 h-4" />
                     </button>
@@ -792,8 +793,8 @@ export default function PdfEditor() {
                         setIsTextItalic(!isTextItalic);
                         if (textInput) setTextInput(prev => ({ ...prev, isItalic: !prev.isItalic }));
                       }}
-                      className={`flex-1 p-1.5 rounded border transition-colors flex items-center justify-center ${isTextItalic ? 'bg-red-100 border-red-300 text-red-700' : 'bg-white border-stone-200 text-stone-600 hover:bg-stone-100'}`}
-                      aria-label="Italic" title="Italic"
+                      className={`flex-1 p-1.5 rounded border transition-colors flex items-center justify-center cursor-pointer ${isTextItalic ? 'bg-red-100 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-red-700 dark:text-red-400' : 'bg-white dark:bg-slate-900 border-stone-200 dark:border-slate-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-slate-800'}`}
+                      aria-label={t('editor.italic', 'Italic')} title={t('editor.italic', 'Italic')}
                     >
                       <Italic className="w-4 h-4" />
                     </button>
@@ -803,9 +804,9 @@ export default function PdfEditor() {
             </div>
             <button 
               onClick={() => { commitTextInput(); setTool(tool === TOOLS.DRAW ? TOOLS.NONE : TOOLS.DRAW); }}
-              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.DRAW ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
+              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.DRAW ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent'}`}
             >
-              <Pen className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">Freehand</span>
+              <Pen className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolDraw', 'Draw')}</span>
             </button>
             <div className={`flex flex-col gap-2 ${activeSignature ? 'col-span-full' : ''}`}>
               {!activeSignature ? (
@@ -814,24 +815,24 @@ export default function PdfEditor() {
                     commitTextInput(); 
                     setIsSignatureModalOpen(true);
                   }}
-                  className="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left text-stone-600 hover:bg-stone-50 border border-transparent"
+                  className="w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent cursor-pointer"
                 >
-                  <FileSignature className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">Signature</span>
+                  <FileSignature className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolSignature', 'Signature')}</span>
                 </button>
               ) : (
-              <div className="flex flex-col gap-1 p-2 bg-stone-50 border border-stone-200 rounded-none">
-                <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider px-2 pt-1">Your Signature</span>
+              <div className="flex flex-col gap-1 p-2 bg-stone-50 dark:bg-slate-800/80 border border-stone-200 dark:border-slate-700 rounded-lg">
+                <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider px-2 pt-1">{t('editor.toolSignature', 'Your Signature')}</span>
                 <button 
                   onClick={() => { commitTextInput(); stampSignature(activeSignature); }}
-                  className="w-full flex flex-col items-center gap-2 px-4 py-3 bg-white rounded-none border border-stone-200 hover:border-red-400 hover:shadow-none border-stone-100 transition-all group"
+                  className="w-full flex flex-col items-center gap-2 px-4 py-3 bg-white dark:bg-slate-900 rounded-lg border border-stone-200 dark:border-slate-700 hover:border-red-400 dark:hover:border-red-500 transition-all group cursor-pointer"
                   aria-label="Click to place on document" title="Click to place on document"
                 >
-                  <img src={activeSignature} alt="Current Signature" className="h-10 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
-                  <span className="text-xs font-medium text-red-600">Click to place</span>
+                  <img src={activeSignature} alt="Current Signature" className="h-10 object-contain opacity-80 group-hover:opacity-100 transition-opacity dark:invert" />
+                  <span className="text-xs font-medium text-red-600 dark:text-red-400">Click to place</span>
                 </button>
                 <button 
                   onClick={() => { commitTextInput(); setIsSignatureModalOpen(true); }}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 mt-1 text-sm font-medium text-stone-500 hover:text-stone-800 hover:bg-stone-200 rounded-none transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 mt-1 text-sm font-medium text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white hover:bg-stone-200 dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
                 >
                   <FileSignature className="w-4 h-4" /> Create New
                 </button>
@@ -840,33 +841,33 @@ export default function PdfEditor() {
             </div>
             <button 
               onClick={() => { commitTextInput(); setTool(tool === TOOLS.BLACKOUT ? TOOLS.NONE : TOOLS.BLACKOUT); }}
-              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.BLACKOUT ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
+              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.BLACKOUT ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent'}`}
             >
-              <Square className="w-5 h-5 fill-current flex-shrink-0" /> <span className="truncate text-sm md:text-base">Blackout</span>
+              <Square className="w-5 h-5 fill-current flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolBlackout', 'Blackout')}</span>
             </button>
             <button 
               onClick={() => { commitTextInput(); setTool(tool === TOOLS.WHITEOUT ? TOOLS.NONE : TOOLS.WHITEOUT); }}
-              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.WHITEOUT ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
+              className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.WHITEOUT ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent'}`}
             >
-              <Eraser className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">Whiteout</span>
+              <Eraser className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolWhiteout', 'Whiteout')}</span>
             </button>
             <div className={`flex flex-col gap-2 ${tool === TOOLS.HIGHLIGHT ? 'col-span-full' : ''}`}>
               <button 
                 onClick={() => { commitTextInput(); setTool(tool === TOOLS.HIGHLIGHT ? TOOLS.NONE : TOOLS.HIGHLIGHT); }}
-                className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.HIGHLIGHT ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-transparent'}`}
+                className={`w-full flex items-center gap-2 md:gap-3 px-3 md:px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.HIGHLIGHT ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-transparent'}`}
               >
-                <Highlighter className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">Highlight</span>
+                <Highlighter className="w-5 h-5 flex-shrink-0" /> <span className="truncate text-sm md:text-base">{t('editor.toolHighlight', 'Highlight')}</span>
               </button>
               {tool === TOOLS.HIGHLIGHT && (
-                <div className="p-2 bg-stone-50 rounded-none border border-stone-200">
-                  <span className="text-xs font-semibold text-stone-500 block mb-2 px-1">Choose Color</span>
+                <div className="p-2.5 bg-stone-50 dark:bg-slate-800/80 rounded-lg border border-stone-200 dark:border-slate-700">
+                  <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 block mb-2 px-1">{t('editor.highlighterColor', 'Color')}</span>
                   <div className="flex justify-between px-1">
                     {['rgb(253, 224, 71)', 'rgb(134, 239, 172)', 'rgb(147, 197, 253)', 'rgb(249, 168, 212)', 'rgb(216, 180, 254)'].map(color => (
                       <button
                         key={color}
                         onClick={() => setHighlightColor(color)}
-                        className={`w-6 h-6 rounded-full border-2 ${highlightColor === color ? 'border-stone-800 scale-110' : 'border-transparent hover:scale-110'} transition-transform shadow-none border-stone-100`}
-                        style={{ backgroundColor: color, opacity: 0.8 }}
+                        className={`w-6 h-6 rounded-full border-2 ${highlightColor === color ? 'border-stone-800 dark:border-white scale-110' : 'border-transparent hover:scale-110'} transition-transform shadow-none`}
+                        style={{ backgroundColor: color, opacity: 0.85 }}
                         aria-label="Select highlight color" title="Select highlight color"
                       />
                     ))}
@@ -876,42 +877,42 @@ export default function PdfEditor() {
             </div>
           </div>
 
-          <div className="space-y-2 mt-4 pt-4 border-t border-stone-100">
-            <h4 className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3 px-2">Fill & Stamp</h4>
+          <div className="space-y-2 mt-4 pt-4 border-t border-stone-100 dark:border-slate-800">
+            <h4 className="text-xs font-semibold text-stone-400 dark:text-stone-400 uppercase tracking-wider mb-3 px-2">Fill & Stamp</h4>
             <div className="grid grid-cols-2 gap-2">
               <button 
                 onClick={() => { commitTextInput(); setTool(TOOLS.CHECKMARK); }}
-                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-none transition-colors font-medium ${tool === TOOLS.CHECKMARK ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-stone-200'}`}
-                aria-label="Add Checkmark" title="Add Checkmark"
+                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors font-medium cursor-pointer ${tool === TOOLS.CHECKMARK ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-stone-200 dark:border-slate-700'}`}
+                aria-label={t('editor.toolCheckmark', 'Add Checkmark')} title={t('editor.toolCheckmark', 'Add Checkmark')}
               >
                 <Check className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => { commitTextInput(); setTool(TOOLS.CROSS); }}
-                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-none transition-colors font-medium ${tool === TOOLS.CROSS ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-stone-200'}`}
-                aria-label="Add Cross" title="Add Cross"
+                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors font-medium cursor-pointer ${tool === TOOLS.CROSS ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-stone-200 dark:border-slate-700'}`}
+                aria-label={t('editor.toolCross', 'Add Cross')} title={t('editor.toolCross', 'Add Cross')}
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             {(tool === TOOLS.CHECKMARK || tool === TOOLS.CROSS) && (
-              <p className="text-xs text-stone-500 mt-2 text-center">Click canvas to place symbol</p>
+              <p className="text-xs text-stone-500 dark:text-stone-400 mt-2 text-center">Click canvas to place symbol</p>
             )}
             
             <div className="mt-2">
               <button 
                 onClick={() => { commitTextInput(); setTool(TOOLS.STAMP); }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-none transition-colors font-medium text-left ${tool === TOOLS.STAMP ? 'bg-red-50 text-red-700 border border-red-200' : 'text-stone-600 hover:bg-stone-50 border border-stone-200'}`}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors font-medium text-left cursor-pointer ${tool === TOOLS.STAMP ? 'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50' : 'text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 border border-stone-200 dark:border-slate-700'}`}
               >
-                <Stamp className={`w-5 h-5 ${tool === TOOLS.STAMP ? 'text-red-600' : 'text-stone-400'}`} />
-                <span>Stamp</span>
+                <Stamp className={`w-5 h-5 ${tool === TOOLS.STAMP ? 'text-red-600 dark:text-red-400' : 'text-stone-400'}`} />
+                <span>{t('editor.toolStamp', 'Stamp')}</span>
               </button>
               {tool === TOOLS.STAMP && (
-                <div className="mt-2 p-2 bg-stone-50 rounded-none border border-stone-200">
+                <div className="mt-2 p-2.5 bg-stone-50 dark:bg-slate-800/80 rounded-lg border border-stone-200 dark:border-slate-700">
                   <select 
                     value={selectedStamp}
                     onChange={(e) => setSelectedStamp(e.target.value)}
-                    className="w-full p-2 bg-white border border-stone-200 rounded text-sm font-medium outline-none text-stone-700"
+                    className="w-full p-2 bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 rounded text-sm font-medium outline-none text-stone-700 dark:text-stone-200"
                   >
                     {STAMP_OPTIONS.map(s => (
                       <option key={s.text} value={s.text}>{s.text}</option>
@@ -919,21 +920,21 @@ export default function PdfEditor() {
                   </select>
                   
                   {selectedStamp === 'CUSTOM...' && (
-                    <div className="mt-3 space-y-2 border-t border-stone-200 pt-2">
+                    <div className="mt-3 space-y-2 border-t border-stone-200 dark:border-slate-700 pt-2">
                       <input 
                         type="text" 
                         value={customStampText}
                         onChange={(e) => setCustomStampText(e.target.value)}
                         placeholder="Enter text..."
                         maxLength={20}
-                        className="w-full p-2 bg-white border border-stone-200 rounded text-sm font-medium outline-none text-stone-700 uppercase"
+                        className="w-full p-2 bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 rounded text-sm font-medium outline-none text-stone-700 dark:text-stone-200 uppercase"
                       />
                       <div className="flex justify-between px-1">
                         {['rgb(239, 68, 68)', 'rgb(34, 197, 94)', 'rgb(59, 130, 246)', 'rgb(0, 0, 0)', 'rgb(249, 115, 22)'].map(color => (
                           <button
                             key={color}
                             onClick={() => setCustomStampColor(color)}
-                            className={`w-6 h-6 rounded-full border-2 ${customStampColor === color ? 'border-stone-800 scale-110' : 'border-transparent hover:scale-110'} transition-transform`}
+                            className={`w-6 h-6 rounded-full border-2 ${customStampColor === color ? 'border-stone-800 dark:border-white scale-110' : 'border-transparent hover:scale-110'} transition-transform cursor-pointer`}
                             style={{ backgroundColor: color }}
                             aria-label="Select color" title="Select color"
                           />
@@ -942,19 +943,19 @@ export default function PdfEditor() {
                     </div>
                   )}
                   
-                  <p className="text-xs text-stone-500 mt-3 text-center">Click canvas to stamp</p>
+                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-3 text-center">Click canvas to stamp</p>
                 </div>
               )}
             </div>
           </div>
 
-          <div className="my-6 border-t border-stone-100"></div>
+          <div className="my-6 border-t border-stone-100 dark:border-slate-800"></div>
           
           <button 
             onClick={() => { commitTextInput(); setTimeout(handleExport, 100); }}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 text-white rounded-none font-medium hover:bg-red-700 transition-colors shadow-none border-stone-100"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-colors shadow-sm cursor-pointer"
           >
-            <Download className="w-5 h-5" /> Download PDF
+            <Download className="w-5 h-5" /> {t('editor.download', 'Download PDF')}
           </button>
         </div>
       </div>
@@ -964,19 +965,25 @@ export default function PdfEditor() {
         <div className="flex-grow flex flex-col items-center">
           
           {/* Pagination Controls */}
-        <div className="bg-white rounded-full shadow-none border-stone-100 border border-stone-200 px-4 py-2 flex items-center gap-4 mb-6">
+        <div className="bg-white dark:bg-slate-900 rounded-full shadow-sm border border-stone-200 dark:border-slate-800 px-4 py-2 flex items-center gap-4 mb-6 transition-colors">
           <button 
             disabled={pageNum <= 1}
             onClick={() => setPageNum(p => Math.max(1, p - 1))}
-            className="p-1 rounded-full text-stone-500 hover:bg-stone-100 hover:text-stone-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="p-1 rounded-full text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-slate-800 hover:text-stone-800 dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+            aria-label={t('editor.prevPage', 'Previous page')}
+            title={t('editor.prevPage', 'Previous page')}
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <span className="text-sm font-medium text-stone-700">Page {pageNum} of {numPages}</span>
+          <span className="text-sm font-medium text-stone-700 dark:text-stone-200">
+            {t('editor.page', 'Page')} {pageNum} {t('editor.of', 'of')} {numPages}
+          </span>
           <button 
             disabled={pageNum >= numPages}
             onClick={() => setPageNum(p => Math.min(numPages, p + 1))}
-            className="p-1 rounded-full text-stone-500 hover:bg-stone-100 hover:text-stone-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="p-1 rounded-full text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-slate-800 hover:text-stone-800 dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+            aria-label={t('editor.nextPage', 'Next page')}
+            title={t('editor.nextPage', 'Next page')}
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -1325,6 +1332,7 @@ export default function PdfEditor() {
             setPageNum(displayNum);
             setViewMode('edit');
           }}
+          dict={dict}
         />
       )}
       
@@ -1336,6 +1344,7 @@ export default function PdfEditor() {
           setActiveSignature(dataUrl);
           stampSignature(dataUrl);
         }}
+        dict={dict}
       />
     </div>
   );

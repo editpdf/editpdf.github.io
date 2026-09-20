@@ -1,0 +1,112 @@
+---
+import { languages, type Locale } from '../i18n/ui';
+import { useTranslatedPath } from '../i18n/utils';
+
+interface Props {
+  currentLang: Locale;
+  className?: string;
+}
+
+const { currentLang, className = '' } = Astro.props;
+const translatePath = useTranslatedPath(currentLang);
+---
+
+<div class={`relative inline-block text-left ${className}`} id="lang-picker-container">
+  <button
+    type="button"
+    id="lang-picker-btn"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Select language"
+    class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-slate-800 transition-colors duration-150 border border-transparent focus:outline-none focus:ring-2 focus:ring-red-500/50 cursor-pointer"
+  >
+    {/* Globe Icon */}
+    <svg class="w-4 h-4 text-stone-500 dark:text-stone-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+      <path d="M2 12h20"></path>
+    </svg>
+    <span class="hidden sm:inline">{languages[currentLang]}</span>
+    <span class="sm:hidden uppercase">{currentLang}</span>
+    {/* Chevron Down */}
+    <svg class="w-3.5 h-3.5 text-stone-400 transition-transform duration-150" id="lang-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  {/* Dropdown Menu with crawlable <a> tags for SEO */}
+  <div
+    id="lang-picker-menu"
+    class="hidden absolute right-0 mt-1.5 w-40 origin-top-right rounded-xl bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 shadow-xl py-1.5 z-50 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+  >
+    {Object.entries(languages).map(([code, name]) => {
+      const isSelected = code === currentLang;
+      const targetPath = translatePath('', code as Locale);
+      return (
+        <a
+          href={targetPath}
+          role="menuitem"
+          class={`flex items-center justify-between px-3.5 py-2 text-sm transition-colors ${
+            isSelected
+              ? 'bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-semibold'
+              : 'text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-slate-800 hover:text-stone-900 dark:hover:text-white font-normal'
+          }`}
+        >
+          <span>{name}</span>
+          {isSelected && (
+            <svg class="w-4 h-4 text-red-600 dark:text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          )}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    function initLangPicker() {
+      const btn = document.getElementById('lang-picker-btn');
+      const menu = document.getElementById('lang-picker-menu');
+      const chevron = document.getElementById('lang-chevron');
+      const container = document.getElementById('lang-picker-container');
+      if (!btn || !menu) return;
+
+      function toggle(open) {
+        const isExpanded = open !== undefined ? open : menu.classList.contains('hidden');
+        if (isExpanded) {
+          menu.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+          if (chevron) chevron.classList.add('rotate-180');
+        } else {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+          if (chevron) chevron.classList.remove('rotate-180');
+        }
+      }
+
+      btn.onclick = function (e) {
+        e.stopPropagation();
+        toggle();
+      };
+
+      document.addEventListener('click', function (e) {
+        if (container && !container.contains(e.target)) {
+          toggle(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          toggle(false);
+        }
+      });
+    }
+
+    initLangPicker();
+    document.addEventListener('astro:page-load', initLangPicker);
+  })();
+</script>

@@ -4,7 +4,7 @@ import { arrayMove, SortableContext, sortableKeyboardCoordinates, rectSortingStr
 import { CSS } from '@dnd-kit/utilities';
 import { Trash2, GripVertical, FileText } from 'lucide-react';
 
-function SortableItem({ id, pageNum, pdfDoc, onDelete, onClick }) {
+function SortableItem({ id, pageNum, pdfDoc, onDelete, onClick, t }) {
   const {
     attributes,
     listeners,
@@ -63,39 +63,48 @@ function SortableItem({ id, pageNum, pdfDoc, onDelete, onClick }) {
     <div 
       ref={setNodeRef} 
       style={style} 
-      className="relative bg-white border border-stone-200 group flex flex-col items-center hover:border-red-600 hover:shadow-md transition-all cursor-pointer"
+      className="relative bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 rounded-lg overflow-hidden group flex flex-col items-center hover:border-red-600 dark:hover:border-red-500 hover:shadow-md transition-all cursor-pointer"
       onClick={onClick}
     >
-      <div className="absolute top-2 left-2 z-10 p-1 bg-white/80 backdrop-blur-sm border border-stone-200 rounded text-stone-400 opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing transition-opacity" {...attributes} {...listeners} onClick={(e) => e.stopPropagation()}>
+      <div 
+        className="absolute top-2 left-2 z-10 p-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-stone-200 dark:border-slate-700 rounded text-stone-400 dark:text-stone-300 opacity-0 group-hover:opacity-100 cursor-grab active:cursor-grabbing transition-opacity" 
+        {...attributes} 
+        {...listeners} 
+        onClick={(e) => e.stopPropagation()}
+        aria-label="Drag to reorder"
+      >
         <GripVertical className="w-4 h-4" />
       </div>
       
       <button 
         onClick={(e) => { e.stopPropagation(); onDelete(id); }}
-        className="absolute top-2 right-2 z-10 p-1.5 bg-white/80 backdrop-blur-sm border border-stone-200 rounded text-stone-400 hover:text-red-600 hover:border-red-200 opacity-0 group-hover:opacity-100 transition-all"
-        title="Delete Page"
+        className="absolute top-2 right-2 z-10 p-1.5 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-stone-200 dark:border-slate-700 rounded text-stone-400 hover:text-red-600 dark:text-stone-400 dark:hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+        title={t('editor.deletePage', 'Delete Page')}
+        aria-label={t('editor.deletePage', 'Delete Page')}
       >
         <Trash2 className="w-4 h-4" />
       </button>
 
       <div 
-        className="w-full h-full flex justify-center items-center bg-stone-50 overflow-hidden relative border-b border-stone-100"
+        className="w-full h-full flex justify-center items-center bg-stone-50 dark:bg-slate-950 overflow-hidden relative border-b border-stone-100 dark:border-slate-800 p-2"
         style={{ minHeight: '180px' }}
       >
-        <canvas ref={canvasRef} className="max-w-full max-h-full object-contain pointer-events-none" />
+        <canvas ref={canvasRef} className="max-w-full max-h-full object-contain pointer-events-none shadow-sm" />
       </div>
       
-      <div className="py-3 px-4 w-full flex items-center justify-between bg-white text-sm">
-        <span className="font-medium text-stone-700 flex items-center gap-2">
-          <FileText className="w-4 h-4 text-stone-400" />
-          Page {pageNum}
+      <div className="py-2.5 px-4 w-full flex items-center justify-between bg-white dark:bg-slate-900 text-sm">
+        <span className="font-medium text-stone-700 dark:text-stone-300 flex items-center gap-2">
+          <FileText className="w-4 h-4 text-stone-400 dark:text-stone-500" />
+          {t('editor.page', 'Page')} {pageNum}
         </span>
       </div>
     </div>
   );
 }
 
-export default function OrganizeView({ pdfDoc, pageOrder, setPageOrder, onSelectPage }) {
+export default function OrganizeView({ pdfDoc, pageOrder, setPageOrder, onSelectPage, dict = {} }) {
+  const t = (key, fallback) => dict[key] || fallback;
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -120,21 +129,25 @@ export default function OrganizeView({ pdfDoc, pageOrder, setPageOrder, onSelect
 
   const handleDelete = (id) => {
     if (pageOrder.length <= 1) {
-      alert("You cannot delete the last page.");
+      alert(t('editor.cannotDeleteLast', 'You cannot delete the last page.'));
       return;
     }
     setPageOrder(pageOrder.filter(p => p.id !== id));
   };
 
   return (
-    <div className="w-full bg-stone-50 border border-stone-200 p-8 overflow-auto min-h-[70vh]">
-      <div className="mb-8 flex justify-between items-center pb-4 border-b border-stone-200">
+    <div className="w-full bg-stone-50 dark:bg-slate-950/60 border border-stone-200 dark:border-slate-800 rounded-xl p-6 sm:p-8 overflow-auto min-h-[70vh] transition-colors">
+      <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-stone-200 dark:border-slate-800">
         <div>
-          <h2 className="text-2xl font-medium tracking-tight text-stone-900 mb-1">Organize Pages</h2>
-          <p className="text-sm text-stone-500">Drag pages to reorder them. Click the trash icon to delete a page.</p>
+          <h2 className="text-2xl font-bold tracking-tight text-stone-900 dark:text-white mb-1">
+            {t('editor.organizeTitle', 'Organize Pages')}
+          </h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400">
+            {t('editor.organizeSub', 'Drag pages to reorder them. Click the trash icon to delete a page.')}
+          </p>
         </div>
-        <div className="text-sm font-medium text-stone-400 bg-white px-3 py-1.5 border border-stone-200 rounded-full">
-          {pageOrder.length} {pageOrder.length === 1 ? 'Page' : 'Pages'}
+        <div className="text-sm font-medium text-stone-600 dark:text-stone-300 bg-white dark:bg-slate-900 px-3.5 py-1.5 border border-stone-200 dark:border-slate-800 rounded-full shadow-sm">
+          {pageOrder.length} {pageOrder.length === 1 ? t('editor.page', 'Page') : t('editor.pages', 'Pages')}
         </div>
       </div>
       
@@ -153,6 +166,7 @@ export default function OrganizeView({ pdfDoc, pageOrder, setPageOrder, onSelect
                 pdfDoc={pdfDoc}
                 onDelete={handleDelete}
                 onClick={() => onSelectPage(index + 1)} // 1-indexed display page
+                t={t}
               />
             ))}
           </SortableContext>

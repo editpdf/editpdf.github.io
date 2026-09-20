@@ -7,11 +7,14 @@ const FONTS = [
   'Satisfy', 'Yellowtail'
 ];
 
-export default function SignatureModal({ isOpen, onClose, onSave }) {
+export default function SignatureModal({ isOpen, onClose, onSave, dict = {} }) {
   const [activeTab, setActiveTab] = useState('type'); // 'type' | 'draw' | 'upload'
   const [typedName, setTypedName] = useState('');
   const [uploadedImage, setUploadedImage] = useState(null);
   
+  // Translation helper
+  const t = (key, fallback) => dict[key] || fallback;
+
   // Drawing state
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -128,33 +131,49 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
     }
   };
 
+  const tabLabels = {
+    type: t('sig.typeTab', 'Type Signature'),
+    draw: t('sig.drawTab', 'Draw Signature'),
+    upload: t('sig.uploadTab', 'Upload Image'),
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4">
-      <div className="bg-white shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/60 dark:bg-black/80 backdrop-blur-sm p-4">
+      <div className="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] rounded-xl transition-colors">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-5 border-b border-stone-100">
-          <h2 className="text-xl font-medium tracking-tight text-stone-900">Add Signature</h2>
-          <button onClick={onClose} aria-label="Close modal" className="text-stone-400 hover:text-red-600 transition-colors">
+        <div className="flex items-center justify-between px-8 py-5 border-b border-stone-100 dark:border-slate-800">
+          <h2 className="text-xl font-medium tracking-tight text-stone-900 dark:text-white">
+            {t('sig.title', 'Add Signature')}
+          </h2>
+          <button 
+            onClick={onClose} 
+            aria-label={t('sig.close', 'Close modal')} 
+            className="text-stone-400 dark:text-stone-500 hover:text-red-600 dark:hover:text-red-400 transition-colors p-1 rounded-lg hover:bg-stone-100 dark:hover:bg-slate-800 cursor-pointer"
+          >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Tabs */}
-        <div className="flex px-8 border-b border-stone-100">
+        <div className="flex px-8 border-b border-stone-100 dark:border-slate-800 bg-stone-50/30 dark:bg-slate-900/50">
           {['type', 'draw', 'upload'].map((tab) => (
             <button 
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-4 font-medium text-sm border-b-2 transition-all capitalize ${activeTab === tab ? 'border-red-600 text-red-600' : 'border-transparent text-stone-500 hover:text-stone-800'}`}
+              className={`px-6 py-4 font-medium text-sm border-b-2 transition-all cursor-pointer ${
+                activeTab === tab 
+                  ? 'border-red-600 text-red-600 dark:border-red-500 dark:text-red-400 font-semibold' 
+                  : 'border-transparent text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200'
+              }`}
             >
-              {tab} Signature
+              {tabLabels[tab]}
             </button>
           ))}
         </div>
 
         {/* Content */}
-        <div className="p-8 overflow-y-auto flex-grow bg-stone-50/50">
+        <div className="p-8 overflow-y-auto flex-grow bg-stone-50/50 dark:bg-slate-950/50">
           
           {activeTab === 'type' && (
             <div className="space-y-6">
@@ -163,8 +182,8 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
                   type="text" 
                   value={typedName}
                   onChange={(e) => setTypedName(e.target.value)}
-                  placeholder="Type your name..."
-                  className="w-full px-0 py-3 bg-transparent border-b-2 border-stone-200 focus:border-red-600 outline-none text-2xl text-stone-900 placeholder:text-stone-400 transition-colors"
+                  placeholder={t('sig.namePlaceholder', 'Type your name...')}
+                  className="w-full px-0 py-3 bg-transparent border-b-2 border-stone-200 dark:border-slate-700 focus:border-red-600 dark:focus:border-red-500 outline-none text-2xl text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-600 transition-colors"
                 />
               </div>
 
@@ -174,11 +193,11 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
                     <button
                       key={font}
                       onClick={() => saveTypedSignature(font)}
-                      className="p-6 bg-white border border-stone-200 hover:border-red-600 hover:text-red-600 transition-all flex items-center justify-center min-h-[120px] overflow-hidden group"
+                      className="p-6 bg-white dark:bg-slate-800/80 border border-stone-200 dark:border-slate-700 hover:border-red-600 dark:hover:border-red-500 hover:text-red-600 dark:hover:text-red-400 transition-all flex items-center justify-center min-h-[120px] overflow-hidden group rounded-lg cursor-pointer shadow-sm hover:shadow"
                     >
                       <span 
                         style={{ fontFamily: font }} 
-                        className="text-4xl text-stone-800 group-hover:text-red-600 transition-colors whitespace-nowrap"
+                        className="text-4xl text-stone-800 dark:text-stone-100 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors whitespace-nowrap"
                       >
                         {typedName}
                       </span>
@@ -191,7 +210,7 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
 
           {activeTab === 'draw' && (
             <div className="flex flex-col items-center">
-              <div className="w-full bg-white border border-stone-200 overflow-hidden relative group">
+              <div className="w-full bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 overflow-hidden relative group rounded-lg">
                 <canvas
                   ref={canvasRef}
                   width={600}
@@ -200,13 +219,14 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
                   onPointerMove={draw}
                   onPointerUp={stopDrawing}
                   onPointerLeave={stopDrawing}
-                  className="w-full h-auto cursor-crosshair touch-none"
+                  className="w-full h-auto cursor-crosshair touch-none bg-white dark:bg-slate-900"
                   style={{ minHeight: '250px' }}
                 />
                 <button 
                   onClick={clearCanvas}
-                  className="absolute top-4 right-4 p-2 text-stone-400 hover:text-red-600 bg-white shadow-sm border border-stone-100 rounded-full opacity-0 group-hover:opacity-100 transition-all"
-                  title="Clear signature"
+                  className="absolute top-4 right-4 p-2 text-stone-400 hover:text-red-600 dark:text-stone-400 dark:hover:text-red-400 bg-white dark:bg-slate-800 shadow-sm border border-stone-100 dark:border-slate-700 rounded-full opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+                  title={t('sig.clear', 'Clear')}
+                  aria-label={t('sig.clear', 'Clear')}
                 >
                   <RefreshCcw className="w-4 h-4" />
                 </button>
@@ -214,9 +234,9 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
               <div className="w-full flex justify-end mt-6">
                 <button 
                   onClick={saveDrawnSignature}
-                  className="px-8 py-3 bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-colors"
+                  className="px-8 py-3 bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer shadow-sm hover:shadow"
                 >
-                  Apply Signature
+                  {t('sig.apply', 'Apply Signature')}
                 </button>
               </div>
             </div>
@@ -225,18 +245,20 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
           {activeTab === 'upload' && (
             <div className="flex flex-col items-center">
               {!uploadedImage ? (
-                <label className="w-full flex flex-col items-center justify-center py-16 px-4 border-2 border-dashed border-stone-200 bg-white hover:border-red-400 hover:bg-red-50/30 transition-colors cursor-pointer">
-                  <p className="text-stone-500 mb-2 font-medium">Click to upload image</p>
-                  <p className="text-stone-400 text-sm">PNG or JPG, max 5MB</p>
+                <label className="w-full flex flex-col items-center justify-center py-16 px-4 border-2 border-dashed border-stone-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 hover:border-red-400 dark:hover:border-red-500 hover:bg-red-50/30 dark:hover:bg-red-950/20 transition-colors cursor-pointer rounded-lg">
+                  <p className="text-stone-700 dark:text-stone-300 mb-2 font-medium">{t('sig.uploadBoxPrompt', 'Click to upload image')}</p>
+                  <p className="text-stone-400 dark:text-stone-500 text-sm">{t('sig.uploadBoxSub', 'PNG or JPG, max 5MB')}</p>
                   <input type="file" className="hidden" accept="image/png, image/jpeg" onChange={handleImageUpload} />
                 </label>
               ) : (
                 <div className="w-full flex flex-col items-center">
-                  <div className="w-full bg-white border border-stone-200 p-6 flex items-center justify-center min-h-[250px] relative group">
+                  <div className="w-full bg-white dark:bg-slate-800 border border-stone-200 dark:border-slate-700 p-6 flex items-center justify-center min-h-[250px] relative group rounded-lg">
                     <img src={uploadedImage} alt="Uploaded signature" className="max-w-full max-h-[200px] object-contain" />
                     <button 
                       onClick={() => setUploadedImage(null)}
-                      className="absolute top-4 right-4 p-2 text-stone-400 hover:text-red-600 bg-white shadow-sm border border-stone-100 rounded-full opacity-0 group-hover:opacity-100 transition-all"
+                      className="absolute top-4 right-4 p-2 text-stone-400 hover:text-red-600 dark:text-stone-400 dark:hover:text-red-400 bg-white dark:bg-slate-800 shadow-sm border border-stone-100 dark:border-slate-700 rounded-full opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+                      title={t('sig.changeImage', 'Change Image')}
+                      aria-label={t('sig.changeImage', 'Change Image')}
                     >
                       <RefreshCcw className="w-4 h-4" />
                     </button>
@@ -244,9 +266,9 @@ export default function SignatureModal({ isOpen, onClose, onSave }) {
                   <div className="w-full flex justify-end mt-6">
                     <button 
                       onClick={saveUploadedSignature}
-                      className="px-8 py-3 bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition-colors"
+                      className="px-8 py-3 bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer shadow-sm hover:shadow"
                     >
-                      Apply Signature
+                      {t('sig.apply', 'Apply Signature')}
                     </button>
                   </div>
                 </div>
