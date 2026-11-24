@@ -1,0 +1,209 @@
+---
+import { type Locale } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const features = [
+	{
+		title: t('features.f1.title'),
+		desc: t('features.f1.desc'),
+		icon: 'text',
+	},
+	{
+		title: t('features.f2.title'),
+		desc: t('features.f2.desc'),
+		icon: 'signature',
+	},
+	{
+		title: t('features.f3.title'),
+		desc: t('features.f3.desc'),
+		icon: 'highlight',
+	},
+	{
+		title: t('features.f4.title'),
+		desc: t('features.f4.desc'),
+		icon: 'stamp',
+	},
+	{
+		title: t('features.f5.title'),
+		desc: t('features.f5.desc'),
+		icon: 'organize',
+	},
+	{
+		title: t('features.f6.title'),
+		desc: t('features.f6.desc'),
+		icon: 'shield',
+	},
+];
+
+const steps = [
+	{ num: '1', title: t('how.step1.title'), desc: t('how.step1.desc') },
+	{ num: '2', title: t('how.step2.title'), desc: t('how.step2.desc') },
+	{ num: '3', title: t('how.step3.title'), desc: t('how.step3.desc') },
+];
+
+const useCases = [
+	{ title: t('usecases.u1.title'), desc: t('usecases.u1.desc') },
+	{ title: t('usecases.u2.title'), desc: t('usecases.u2.desc') },
+	{ title: t('usecases.u3.title'), desc: t('usecases.u3.desc') },
+	{ title: t('usecases.u4.title'), desc: t('usecases.u4.desc') },
+];
+
+const faqs = [
+	{ q: t('faq.q1'), a: t('faq.a1') },
+	{ q: t('faq.q2'), a: t('faq.a2') },
+	{ q: t('faq.q3'), a: t('faq.a3') },
+	{ q: t('faq.q4'), a: t('faq.a4') },
+	{ q: t('faq.q5'), a: t('faq.a5') },
+	{ q: t('faq.q6'), a: t('faq.a6') },
+];
+---
+
+{/* Features Section */}
+<section id="features" aria-labelledby="features-heading" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-stone-200 dark:border-slate-800">
+	<div class="max-w-2xl mx-auto text-center mb-12">
+		<h2 id="features-heading" class="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-white tracking-tight">
+			{t('features.title')}
+		</h2>
+		<p class="mt-3 text-sm sm:text-base text-stone-500 dark:text-stone-400">
+			{t('features.subtitle')}
+		</p>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+		{features.map((item) => (
+			<article class="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 p-6 rounded-xl shadow-sm transition-colors flex flex-col">
+				<div class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400 flex items-center justify-center mb-4 flex-shrink-0" aria-hidden="true">
+					{item.icon === 'text' && (
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="4 7 4 4 20 4 20 7" />
+							<line x1="9" y1="20" x2="15" y2="20" />
+							<line x1="12" y1="4" x2="12" y2="20" />
+						</svg>
+					)}
+					{item.icon === 'signature' && (
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M12 20h9" />
+							<path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+						</svg>
+					)}
+					{item.icon === 'highlight' && (
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="m9 11-6 6v3h9l3-3" />
+							<path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4" />
+						</svg>
+					)}
+					{item.icon === 'stamp' && (
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M20 6 9 17l-5-5" />
+						</svg>
+					)}
+					{item.icon === 'organize' && (
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<rect width="7" height="7" x="3" y="3" rx="1" />
+							<rect width="7" height="7" x="14" y="3" rx="1" />
+							<rect width="7" height="7" x="14" y="14" rx="1" />
+							<rect width="7" height="7" x="3" y="14" rx="1" />
+						</svg>
+					)}
+					{item.icon === 'shield' && (
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+							<path d="m9 12 2 2 4-4" />
+						</svg>
+					)}
+				</div>
+				<h3 class="text-base font-semibold text-stone-900 dark:text-white mb-2">
+					{item.title}
+				</h3>
+				<p class="text-stone-600 dark:text-stone-300 leading-relaxed text-sm">
+					{item.desc}
+				</p>
+			</article>
+		))}
+	</div>
+</section>
+
+{/* How It Works Section */}
+<section id="how-it-works" aria-labelledby="how-heading" class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-stone-200 dark:border-slate-800">
+	<div class="max-w-2xl mx-auto text-center mb-10">
+		<h2 id="how-heading" class="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-white tracking-tight">
+			{t('how.title')}
+		</h2>
+		<p class="mt-3 text-sm sm:text-base text-stone-500 dark:text-stone-400">
+			{t('how.subtitle')}
+		</p>
+	</div>
+
+	<ol class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+		{steps.map((step) => (
+			<li class="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 p-6 rounded-xl shadow-sm transition-colors">
+				<div class="w-8 h-8 rounded-full bg-red-600 text-white font-bold text-sm flex items-center justify-center mb-4">
+					{step.num}
+				</div>
+				<h3 class="text-base font-semibold text-stone-900 dark:text-white mb-2">
+					{step.title}
+				</h3>
+				<p class="text-stone-600 dark:text-stone-300 leading-relaxed text-sm">
+					{step.desc}
+				</p>
+			</li>
+		))}
+	</ol>
+
+	<div class="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 p-6 sm:p-8 text-stone-600 dark:text-stone-300 leading-relaxed text-sm shadow-sm rounded-xl space-y-4 transition-colors">
+		<h3 class="text-lg font-semibold text-stone-900 dark:text-white">
+			{t('how.privacyTitle')}
+		</h3>
+		<p>{t('how.p1')}</p>
+		<p>{t('how.p2')}</p>
+	</div>
+</section>
+
+{/* Use Cases Section */}
+<section id="use-cases" aria-labelledby="usecases-heading" class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-stone-200 dark:border-slate-800">
+	<div class="max-w-2xl mx-auto text-center mb-10">
+		<h2 id="usecases-heading" class="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-white tracking-tight">
+			{t('usecases.title')}
+		</h2>
+		<p class="mt-3 text-sm sm:text-base text-stone-500 dark:text-stone-400">
+			{t('usecases.subtitle')}
+		</p>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		{useCases.map((item) => (
+			<div class="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 p-6 rounded-xl shadow-sm transition-colors">
+				<h3 class="text-base font-semibold text-stone-900 dark:text-white mb-2">
+					{item.title}
+				</h3>
+				<p class="text-stone-600 dark:text-stone-300 leading-relaxed text-sm">
+					{item.desc}
+				</p>
+			</div>
+		))}
+	</div>
+</section>
+
+{/* FAQ Section */}
+<section id="faq" aria-labelledby="faq-heading" class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-stone-200 dark:border-slate-800">
+	<h2 id="faq-heading" class="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-white mb-8 text-center tracking-tight">
+		{t('faq.title')}
+	</h2>
+	<div class="space-y-4">
+		{faqs.map((item) => (
+			<div class="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 p-6 rounded-xl transition-colors shadow-sm">
+				<h3 class="text-base sm:text-lg font-semibold text-stone-900 dark:text-white mb-2">
+					{item.q}
+				</h3>
+				<p class="text-stone-600 dark:text-stone-300 leading-relaxed text-sm">
+					{item.a}
+				</p>
+			</div>
+		))}
+	</div>
+</section>

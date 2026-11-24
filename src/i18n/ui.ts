@@ -24,26 +24,68 @@ export const ui = {
 
     // SEO Meta
     'seo.title': 'Free Online PDF Editor & Form Filler | Secure, No Uploads',
-    'seo.description': 'Edit PDF files, fill forms, and add signatures instantly in your browser. 100% free and secure - your files are never uploaded to any server.',
+    'seo.description': 'Edit PDF files, fill forms, and add signatures instantly in your browser. 100% free and secure, with zero server uploads and no account required.',
     'seo.ogTitle': 'Free Online PDF Editor & Form Filler | Secure, No Uploads',
 
     // Hero Section
     'hero.h1': 'Free Secure PDF Editor - Fill Forms & Sign Instantly',
     'hero.subtitle': 'Edit PDF files without uploading to any server. Everything happens locally in your browser.',
 
-    // How It Works
-    'how.title': 'How our Secure PDF Editor Works',
-    'how.p1': 'Looking to edit PDF forms easily without compromising your privacy? Our free online PDF editor lets you add text, draw your signature, and fill out documents instantly.',
-    'how.p2': 'Most online PDF tools force you to upload your sensitive files (like bank statements or contracts) to their remote servers. We take a different approach. Because everything runs locally right inside your web browser using modern web technologies, it is the most secure PDF form filler available - absolutely no server uploads required.',
+    // Features Section
+    'features.title': 'Everything You Need to Edit a PDF in Your Browser',
+    'features.subtitle': 'Simple, fast tools designed for everyday documents, without clutter, watermarks, or sign-up walls.',
+    'features.f1.title': 'Fill Forms & Add Text Anywhere',
+    'features.f1.desc': 'Click anywhere on a PDF page to type text, adjust the font size, and switch between bold or italic styles. Ideal for filling out flat, non-interactive forms, rental agreements, and invoices.',
+    'features.f2.title': 'Sign Documents Your Way',
+    'features.f2.desc': 'Create a clean electronic signature by drawing with your mouse or touchscreen, typing your name in handwritten fonts, or uploading an image. Drag and resize it to fit any signature line.',
+    'features.f3.title': 'Highlight, Whiteout & Redact',
+    'features.f3.desc': 'Mark important passages with multi-color highlighters, cover typos with clean whiteout boxes, or hide private information using solid blackout redaction blocks.',
+    'features.f4.title': 'Checkmarks, Stamps & Freehand Notes',
+    'features.f4.desc': 'Drop crisp checkmarks and crosses directly into form checkboxes, sketch quick notes with the freehand pen, or apply clear stamps like Approved, Confidential, Draft, or custom text.',
+    'features.f5.title': 'Organize, Reorder & Delete Pages',
+    'features.f5.desc': 'Switch to Organize view to see every page at a glance. Drag and drop thumbnails into the right sequence or remove blank and unnecessary pages before downloading your final file.',
+    'features.f6.title': 'Zero Uploads & Eye Care Mode',
+    'features.f6.desc': 'All editing runs locally inside your browser tab, so private documents stay on your device. Toggle Eye Care Mode anytime to soften bright white pages during late-night work.',
+
+    // How It Works & Steps
+    'how.title': 'How to Edit a PDF Online Without Uploading',
+    'how.subtitle': 'Finish your paperwork in three straightforward steps, right from your desktop or mobile browser.',
+    'how.step1.title': 'Open Your PDF File',
+    'how.step1.desc': 'Select any PDF from your computer, tablet, or phone. The document loads directly into your browser memory and is never sent to an external server.',
+    'how.step2.title': 'Fill, Sign & Annotate',
+    'how.step2.desc': 'Use the toolbar to type into forms, place your signature, add checkmarks or stamps, redact sensitive text, or rearrange pages in Organize mode.',
+    'how.step3.title': 'Download Clean & Instant',
+    'how.step3.desc': 'Click Download PDF to save a crisp, updated copy directly to your device. There are no watermarks, no page limits, and no email required.',
+    'how.privacyTitle': 'Why Local Browser Processing Matters',
+    'how.p1': 'Looking to edit PDF forms easily without compromising your privacy? Our free online PDF editor lets you add text, draw your signature, highlight key details, and fill out documents in seconds.',
+    'how.p2': 'Most online PDF tools force you to upload sensitive files like bank statements, tax returns, medical records, or signed contracts to remote cloud servers. EditPDF takes a safer approach. Because everything runs locally right inside your web browser using modern web technologies, your documents never leave your device, making it a truly private PDF form filler with zero server uploads required.',
+
+    // Use Cases Section
+    'usecases.title': 'Built for Everyday Paperwork',
+    'usecases.subtitle': 'Whether you are signing a job offer or preparing school handouts, EditPDF keeps things quick and private.',
+    'usecases.u1.title': 'Contracts & Agreements',
+    'usecases.u1.desc': 'Review terms, add dates and initials, place your signature, and send back signed NDAs or client agreements without printing a single page.',
+    'usecases.u2.title': 'Applications & Tax Forms',
+    'usecases.u2.desc': 'Type neatly onto government forms, visa paperwork, and HR onboarding sheets, even when the original PDF does not have clickable form fields.',
+    'usecases.u3.title': 'Financial & Personal Records',
+    'usecases.u3.desc': 'Black out account numbers, addresses, or IDs on bank statements and pay stubs safely on your own machine before sharing them.',
+    'usecases.u4.title': 'Study Notes & Worksheets',
+    'usecases.u4.desc': 'Highlight readings, jot quick hand-drawn annotations, complete class handouts, and delete extra pages from any modern browser.',
 
     // FAQ
     'faq.title': 'Frequently Asked Questions',
     'faq.q1': 'Is my data secure?',
     'faq.a1': 'Absolutely. EditPDF processes everything entirely within your own web browser. Your PDF files are never uploaded to any cloud server, ensuring 100% privacy and security.',
     'faq.q2': 'Can I add my own signature?',
-    'faq.a2': 'Yes, you can draw your signature, type it out using various fonts, or upload an image of your signature. Once added, you can resize and drag it anywhere on the document.',
+    'faq.a2': 'Yes, you can draw your signature, type it out using various handwritten fonts, or upload an image of your signature. Once added, you can resize and drag it anywhere on the document.',
     'faq.q3': 'Do I need to create an account?',
     'faq.a3': 'No, EditPDF is a free, instant tool. There are no accounts, no subscriptions, and no hidden fees required to edit your documents.',
+    'faq.q4': 'Will EditPDF add a watermark to my downloaded file?',
+    'faq.a4': 'Never. Your exported PDF contains only your original document and the edits you made, completely free of watermarks, branding, or daily usage limits.',
+    'faq.q5': 'Can I fill out a non-interactive or scanned PDF form?',
+    'faq.a5': 'Yes. Even if a PDF was scanned or exported without built-in form fields, you can click anywhere with the Add Text tool to type directly onto lines, and use the Checkmark or Cross tools for checkboxes.',
+    'faq.q6': 'Does it work on Mac, Windows, and mobile browsers?',
+    'faq.a6': 'Yes. EditPDF runs directly inside modern web browsers including Chrome, Safari, Firefox, and Edge on Windows, macOS, Linux, iOS, and Android, with no software installation needed.',
 
     // Footer
     'footer.text': 'All processing happens locally in your browser.',
@@ -120,10 +162,46 @@ export const ui = {
     'hero.h1': 'Editor PDF Seguro y Gratuito - Rellena y Firma al Instante',
     'hero.subtitle': 'Edita archivos PDF sin subirlos a ningún servidor. Todo se procesa localmente en tu navegador.',
 
-    // How It Works
-    'how.title': 'Cómo Funciona Nuestro Editor PDF Seguro',
-    'how.p1': '¿Deseas editar formularios PDF con facilidad sin poner en riesgo tu privacidad? Nuestro editor PDF online gratuito te permite añadir texto, dibujar firmas y completar documentos al instante.',
-    'how.p2': 'La mayoría de herramientas online te obligan a subir tus archivos confidenciales (como extractos bancarios o contratos) a sus servidores remotos. Nosotros ofrecemos una solución diferente: todo funciona localmente en tu navegador mediante tecnologías web modernas, convirtiéndolo en la herramienta más segura sin subidas de archivos.',
+    // Features Section
+    'features.title': 'Todo lo que Necesitas para Editar un PDF en tu Navegador',
+    'features.subtitle': 'Herramientas rápidas y claras para tus documentos diarios, sin marcas de agua ni registros obligatorios.',
+    'features.f1.title': 'Rellena Formularios y Añade Texto',
+    'features.f1.desc': 'Haz clic en cualquier punto del documento para escribir texto, ajustar el tamaño de fuente y aplicar negrita o cursiva. Perfecto para contratos, facturas y formularios planos.',
+    'features.f2.title': 'Firma Documentos a tu Manera',
+    'features.f2.desc': 'Crea una firma electrónica dibujándola con el ratón o pantalla táctil, escribiendo tu nombre con tipografías manuscritas o subiendo una imagen. Ajústala al espacio que necesites.',
+    'features.f3.title': 'Resalta, Borra y Oculta Datos',
+    'features.f3.desc': 'Destaca frases clave con resaltadores de varios colores, corrige errores con el borrador blanco o protege datos confidenciales con bloques negros de censura.',
+    'features.f4.title': 'Casillas, Sellos y Dibujo Libre',
+    'features.f4.desc': 'Coloca marcas de verificación o cruces en casillas de formularios, realiza anotaciones a mano alzada o añade sellos como Aprobado, Confidencial, Borrador o texto personalizado.',
+    'features.f5.title': 'Organiza, Reordena y Elimina Páginas',
+    'features.f5.desc': 'Cambia a la vista Organizar para ver todas las miniaturas. Arrastra las páginas para cambiar su orden o elimina hojas en blanco antes de guardar tu archivo final.',
+    'features.f6.title': 'Sin Subidas y Modo Cuidado Visual',
+    'features.f6.desc': 'Toda la edición ocurre de forma local dentro de tu navegador para proteger tu privacidad. Activa el Modo Cuidado Visual cuando trabajes con documentos en entornos oscuros.',
+
+    // How It Works & Steps
+    'how.title': 'Cómo Editar un PDF Online Sin Subirlo a Servidores',
+    'how.subtitle': 'Completa tus trámites en tres pasos sencillos, desde tu ordenador o dispositivo móvil.',
+    'how.step1.title': 'Abre tu Archivo PDF',
+    'how.step1.desc': 'Elige un PDF desde tu equipo o teléfono. El archivo se carga directamente en la memoria de tu navegador sin enviarse a ningún servidor externo.',
+    'how.step2.title': 'Rellena, Firma y Anota',
+    'how.step2.desc': 'Usa la barra de herramientas para añadir texto, insertar tu firma, marcar casillas, aplicar sellos, ocultar datos sensibles o reordenar las páginas.',
+    'how.step3.title': 'Descarga al Instante y Sin Marcas',
+    'how.step3.desc': 'Haz clic en Descargar PDF para guardar tu documento actualizado directamente en tu dispositivo. Sin marcas de agua, sin límites de páginas y sin correo electrónico.',
+    'how.privacyTitle': 'Por Qué Importa el Procesamiento Local',
+    'how.p1': '¿Deseas editar formularios PDF con facilidad sin poner en riesgo tu privacidad? Nuestro editor PDF online gratuito te permite añadir texto, dibujar firmas, resaltar cláusulas y completar documentos al instante.',
+    'how.p2': 'La mayoría de herramientas online te obligan a subir tus archivos confidenciales (como extractos bancarios, declaraciones fiscales o contratos) a servidores remotos. Nosotros ofrecemos una alternativa más segura: todo funciona localmente en tu navegador mediante tecnologías web modernas, para que tus documentos nunca salgan de tu dispositivo.',
+
+    // Use Cases Section
+    'usecases.title': 'Pensado para tus Documentos de Cada Día',
+    'usecases.subtitle': 'Desde firmar un contrato laboral hasta completar tareas de estudio, EditPDF mantiene el proceso ágil y privado.',
+    'usecases.u1.title': 'Contratos y Acuerdos',
+    'usecases.u1.desc': 'Revisa condiciones, escribe la fecha, añade tu firma y devuelve acuerdos firmados en segundos sin necesidad de imprimir ni escanear.',
+    'usecases.u2.title': 'Solicitudes y Trámites',
+    'usecases.u2.desc': 'Completa formularios oficiales, solicitudes de visado o fichas de recursos humanos con letra clara, incluso si el PDF no tiene campos rellenables.',
+    'usecases.u3.title': 'Documentos Financieros y Personales',
+    'usecases.u3.desc': 'Oculta números de cuenta, direcciones o datos personales en extractos bancarios y nóminas directamente en tu equipo antes de compartirlos.',
+    'usecases.u4.title': 'Apuntes y Material de Estudio',
+    'usecases.u4.desc': 'Subraya lecturas, dibuja anotaciones rápidas, rellena ejercicios escolares y elimina páginas sobrantes desde cualquier navegador moderno.',
 
     // FAQ
     'faq.title': 'Preguntas Frecuentes',
@@ -133,6 +211,12 @@ export const ui = {
     'faq.a2': 'Sí, puedes dibujar tu firma, escribirla utilizando diversas tipografías o subir una imagen de tu firma. Una vez añadida, podrás redimensionarla y ubicarla libremente.',
     'faq.q3': '¿Necesito crear una cuenta?',
     'faq.a3': 'No, EditPDF es una herramienta gratuita y de acceso instantáneo. No requiere registros, suscripciones ni tarifas ocultas.',
+    'faq.q4': '¿Se añaden marcas de agua al descargar el PDF?',
+    'faq.a4': 'Nunca. El archivo exportado contiene únicamente tu documento original y tus cambios, completamente libre de marcas de agua o límites diarios.',
+    'faq.q5': '¿Puedo rellenar un formulario PDF escaneado o no interactivo?',
+    'faq.a5': 'Sí. Incluso si el archivo fue escaneado o no cuenta con campos editables, puedes hacer clic en cualquier zona con la herramienta Añadir Texto y usar las marcas de verificación para las casillas.',
+    'faq.q6': '¿Funciona en Windows, Mac y navegadores móviles?',
+    'faq.a6': 'Sí. EditPDF funciona directamente en navegadores modernos como Chrome, Safari, Firefox y Edge en Windows, macOS, Linux, iOS y Android sin instalar programas.',
 
     // Footer
     'footer.text': 'Todo el procesamiento se realiza localmente en tu navegador.',
@@ -202,17 +286,53 @@ export const ui = {
 
     // SEO Meta
     'seo.title': 'Editor de PDF Online Grátis e Preenchimento de Formulários | Seguro e Sem Uploads',
-    'seo.description': 'Edite arquivos PDF, preencha formulários e adicione assinaturas instantaneamente no navegador. 100% gratuito e seguro - seus arquivos nunca são enviados a servidores.',
+    'seo.description': 'Edite arquivos PDF, preencha formulários e adicione assinaturas instantaneamente no navegador. 100% gratuito e seguro, sem enviar arquivos para servidores.',
     'seo.ogTitle': 'Editor de PDF Online Grátis e Preenchimento de Formulários | Seguro e Sem Uploads',
 
     // Hero Section
     'hero.h1': 'Editor de PDF Gratuito e Seguro - Preencha e Assine na Hora',
     'hero.subtitle': 'Edite arquivos PDF sem enviá-los a nenhum servidor. Tudo acontece localmente no seu navegador.',
 
-    // How It Works
-    'how.title': 'Como Funciona o Nosso Editor de PDF Seguro',
-    'how.p1': 'Deseja editar formulários PDF facilmente sem abrir mão da sua privacidade? Nosso editor de PDF online gratuito permite adicionar texto, desenhar assinaturas e preencher documentos na hora.',
-    'how.p2': 'A maioria das ferramentas online força o upload dos seus arquivos confidenciais (como extratos bancários e contratos) para servidores externos. Nós adotamos uma abordagem diferente: todo o processamento ocorre localmente no navegador, sendo a opção mais segura sem necessidade de upload.',
+    // Features Section
+    'features.title': 'Tudo o Que Você Precisa para Editar PDFs no Navegador',
+    'features.subtitle': 'Ferramentas simples e diretas para documentos do dia a dia, sem marcas d’água e sem precisar criar conta.',
+    'features.f1.title': 'Preencha Formulários e Adicione Texto',
+    'features.f1.desc': 'Clique em qualquer área da página para digitar texto, ajustar o tamanho da fonte e alternar entre negrito ou itálico. Ótimo para formulários simples, contratos e faturas.',
+    'features.f2.title': 'Assine Documentos do Seu Jeito',
+    'features.f2.desc': 'Crie sua assinatura desenhando com o mouse ou dedo, digitando seu nome em fontes manuscritas ou enviando uma imagem. Redimensione e posicione livremente no documento.',
+    'features.f3.title': 'Destaque, Apague e Oculte Informações',
+    'features.f3.desc': 'Marque trechos importantes com marca-textos coloridos, corrija erros com cobertura branca ou proteja dados sensíveis usando tarjas pretas.',
+    'features.f4.title': 'Vistos, Carimbos e Anotações Livres',
+    'features.f4.desc': 'Insira vistos e cruzes em caixas de seleção, faça anotações à mão livre ou aplique carimbos como Aprovado, Confidencial, Rascunho ou texto personalizado.',
+    'features.f5.title': 'Organize, Reordene e Exclua Páginas',
+    'features.f5.desc': 'Abra a visualização Organizar para ver todas as miniaturas. Arraste e solte páginas para mudar a ordem ou remova folhas em branco antes de baixar.',
+    'features.f6.title': 'Sem Uploads e Modo Descanso Visual',
+    'features.f6.desc': 'Todo o trabalho acontece localmente na aba do navegador, mantendo seus arquivos no seu dispositivo. Ative o Modo Descanso Visual para suavizar páginas claras à noite.',
+
+    // How It Works & Steps
+    'how.title': 'Como Editar um PDF Online Sem Enviar para Servidores',
+    'how.subtitle': 'Conclua sua papelada em três passos simples, direto do computador ou celular.',
+    'how.step1.title': 'Abra Seu Arquivo PDF',
+    'how.step1.desc': 'Escolha um PDF do seu computador, tablet ou celular. Ele é carregado diretamente na memória do navegador, sem envio a servidores externos.',
+    'how.step2.title': 'Preencha, Assine e Edite',
+    'how.step2.desc': 'Use a barra lateral para digitar em formulários, colocar sua assinatura, marcar caixas, aplicar carimbos, ocultar trechos ou reorganizar páginas.',
+    'how.step3.title': 'Baixe na Hora e Sem Marca d’Água',
+    'how.step3.desc': 'Clique em Baixar PDF para salvar o documento atualizado no seu aparelho. Sem marca d’água, sem limite de páginas e sem pedir e-mail.',
+    'how.privacyTitle': 'Por Que o Processamento Local Faz Diferença',
+    'how.p1': 'Deseja editar formulários PDF facilmente sem abrir mão da sua privacidade? Nosso editor de PDF online gratuito permite adicionar texto, desenhar assinaturas, destacar trechos e preencher documentos na hora.',
+    'how.p2': 'A maioria das ferramentas online força o upload de arquivos confidenciais (como extratos bancários, comprovantes fiscais e contratos) para servidores externos. Adotamos uma abordagem mais segura: todo o processamento ocorre localmente no navegador com tecnologias web modernas, sem nenhum envio de arquivo.',
+
+    // Use Cases Section
+    'usecases.title': 'Feito para a Papelada do Dia a Dia',
+    'usecases.subtitle': 'Seja para assinar um contrato de trabalho ou corrigir apostilas, o EditPDF mantém tudo rápido e privado.',
+    'usecases.u1.title': 'Contratos e Acordos',
+    'usecases.u1.desc': 'Revise cláusulas, adicione datas, insira sua assinatura e devolva documentos assinados em segundos sem precisar imprimir nem digitalizar.',
+    'usecases.u2.title': 'Cadastros e Formulários Fiscais',
+    'usecases.u2.desc': 'Preencha documentos públicos, fichas de RH e formulários de inscrição com clareza, mesmo quando o PDF original não tem campos clicáveis.',
+    'usecases.u3.title': 'Documentos Financeiros e Pessoais',
+    'usecases.u3.desc': 'Oculte números de conta, endereços ou documentos pessoais em extratos bancários e holerites no próprio computador antes de compartilhar.',
+    'usecases.u4.title': 'Estudos e Exercícios',
+    'usecases.u4.desc': 'Destaque leituras, faça anotações rápidas, responda atividades escolares e remova páginas extras em qualquer navegador atualizado.',
 
     // FAQ
     'faq.title': 'Perguntas Frequentes',
@@ -222,6 +342,12 @@ export const ui = {
     'faq.a2': 'Sim, você pode desenhar sua assinatura, digitá-la escolhendo entre várias fontes ou enviar uma imagem. Depois é só redimensionar e posicionar no documento.',
     'faq.q3': 'Preciso criar uma conta?',
     'faq.a3': 'Não, o EditPDF é gratuito e de uso imediato. Não há contas, assinaturas ou taxas ocultas.',
+    'faq.q4': 'O EditPDF coloca marca d’água no PDF baixado?',
+    'faq.a4': 'Nunca. O PDF exportado mantém apenas o seu documento original e as edições feitas, totalmente livre de marcas d’água ou limites diários.',
+    'faq.q5': 'Consigo preencher um PDF digitalizado ou sem campos interativos?',
+    'faq.a5': 'Sim. Mesmo em documentos escaneados ou formulários planos, basta clicar onde quiser com a ferramenta Adicionar Texto e usar Visto ou Cruz para marcar caixas.',
+    'faq.q6': 'Funciona no Windows, Mac e celulares?',
+    'faq.a6': 'Sim. O EditPDF funciona direto em navegadores modernos como Chrome, Safari, Firefox e Edge no Windows, macOS, Linux, iOS e Android, sem precisar instalar nada.',
 
     // Footer
     'footer.text': 'Todo o processamento ocorre localmente no seu navegador.',
@@ -291,17 +417,53 @@ export const ui = {
 
     // SEO Meta
     'seo.title': 'Kostenloser Online-PDF-Editor & Formularausfüller | Sicher, ohne Upload',
-    'seo.description': 'Bearbeiten Sie PDF-Dateien, füllen Sie Formulare aus und signieren Sie Dokumente direkt im Browser. 100 % kostenlos und sicher – Ihre Dateien verlassen niemals Ihr Gerät.',
+    'seo.description': 'Bearbeiten Sie PDF-Dateien, füllen Sie Formulare aus und signieren Sie Dokumente direkt im Browser. 100 % kostenlos und sicher, ganz ohne Server-Upload.',
     'seo.ogTitle': 'Kostenloser Online-PDF-Editor & Formularausfüller | Sicher, ohne Upload',
 
     // Hero Section
-    'hero.h1': 'Kostenloser sicherer PDF-Editor – Formulare ausfüllen & signieren',
+    'hero.h1': 'Kostenloser sicherer PDF-Editor - Formulare ausfüllen & signieren',
     'hero.subtitle': 'Bearbeiten Sie PDFs ohne Server-Upload. Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser.',
 
-    // How It Works
-    'how.title': 'So funktioniert unser sicherer PDF-Editor',
-    'how.p1': 'Möchten Sie PDF-Formulare einfach und datenschutzkonform bearbeiten? Mit unserem kostenlosen Online-PDF-Editor können Sie Text hinzufügen, Unterschriften zeichnen und Dokumente sofort ausfüllen.',
-    'how.p2': 'Viele Online-Dienste verlangen das Hochladen sensibler Dokumente (wie Bankauszüge oder Verträge) auf fremde Server. Wir wählen einen anderen Weg: Dank modernster Webtechnologien läuft alles direkt in Ihrem Webbrowser – absolut ohne Uploads.',
+    // Features Section
+    'features.title': 'Alles, was Sie zur PDF-Bearbeitung im Browser brauchen',
+    'features.subtitle': 'Schnelle, übersichtliche Werkzeuge für den Alltag, ganz ohne Wasserzeichen oder Registrierung.',
+    'features.f1.title': 'Formulare ausfüllen & Text einfügen',
+    'features.f1.desc': 'Klicken Sie auf eine beliebige Stelle der PDF-Seite, um Text einzugeben, die Schriftgröße anzupassen und Fett oder Kursiv zu wählen. Ideal für flache Formulare, Verträge und Rechnungen.',
+    'features.f2.title': 'Flexibel elektronisch unterschreiben',
+    'features.f2.desc': 'Zeichnen Sie Ihre Unterschrift per Maus oder Touchscreen, tippen Sie Ihren Namen in Handschrift-Stilen oder laden Sie ein Bild hoch. Danach lässt sie sich frei platzieren und skalieren.',
+    'features.f3.title': 'Markieren, Überdecken & Schwärzen',
+    'features.f3.desc': 'Heben Sie wichtige Stellen farbig hervor, decken Sie Tippfehler sauber mit Weiß ab oder schwärzen Sie vertrauliche Angaben zuverlässig vor dem Versand.',
+    'features.f4.title': 'Häkchen, Stempel & Freihandnotizen',
+    'features.f4.desc': 'Setzen Sie klare Häkchen und Kreuze in Kontrollkästchen, zeichnen Sie Notizen mit dem Stift oder fügen Sie Stempel wie Genehmigt, Vertraulich, Entwurf oder eigenen Text ein.',
+    'features.f5.title': 'Seiten sortieren & löschen',
+    'features.f5.desc': 'Wechseln Sie in die Ansicht Organisieren, um alle Seiten als Vorschau zu sehen. Ziehen Sie Seiten in die gewünschte Reihenfolge oder entfernen Sie leere Blätter vor dem Export.',
+    'features.f6.title': 'Kein Upload & Augenschonender Modus',
+    'features.f6.desc': 'Jede Bearbeitung läuft lokal in Ihrem Browser-Tab, sodass private Dokumente auf Ihrem Gerät bleiben. Der augenschonende Modus reduziert helles Weiß bei der Arbeit am Abend.',
+
+    // How It Works & Steps
+    'how.title': 'So bearbeiten Sie ein PDF online ohne Upload',
+    'how.subtitle': 'Erledigen Sie Ihre Dokumente in drei einfachen Schritten direkt am Desktop oder auf dem Smartphone.',
+    'how.step1.title': 'PDF-Datei öffnen',
+    'how.step1.desc': 'Wählen Sie ein PDF von Ihrem Computer, Tablet oder Smartphone aus. Das Dokument wird lokal im Browser geladen und nie an einen externen Server übertragen.',
+    'how.step2.title': 'Ausfüllen, signieren & anpassen',
+    'how.step2.desc': 'Nutzen Sie die Werkzeugleiste für Text, Unterschriften, Häkchen, Stempel, Schwärzungen oder sortieren Sie Seiten im Bereich Organisieren.',
+    'how.step3.title': 'Sofort sauber herunterladen',
+    'how.step3.desc': 'Klicken Sie auf PDF herunterladen, um die fertige Datei direkt auf Ihrem Gerät zu speichern. Ohne Wasserzeichen, ohne Seitenlimit und ohne E-Mail.',
+    'how.privacyTitle': 'Warum lokale Verarbeitung im Browser entscheidend ist',
+    'how.p1': 'Möchten Sie PDF-Formulare einfach und datenschutzkonform bearbeiten? Mit unserem kostenlosen Online-PDF-Editor können Sie Text hinzufügen, Unterschriften zeichnen, Textstellen markieren und Dokumente sofort ausfüllen.',
+    'how.p2': 'Viele Online-Dienste verlangen das Hochladen sensibler Dokumente wie Bankauszüge, Steuerunterlagen oder Verträge auf fremde Cloud-Server. Wir gehen einen sichereren Weg: Dank moderner Webtechnologien läuft alles direkt in Ihrem Webbrowser, sodass Ihre Dateien Ihr Gerät niemals verlassen.',
+
+    // Use Cases Section
+    'usecases.title': 'Gemacht für typische Alltagsdokumente',
+    'usecases.subtitle': 'Vom Arbeitsvertrag bis zum Arbeitsblatt erledigen Sie PDF-Aufgaben schnell und ohne Datenschutzrisiko.',
+    'usecases.u1.title': 'Verträge & Vereinbarungen',
+    'usecases.u1.desc': 'Prüfen Sie Bedingungen, ergänzen Sie Datum und Unterschrift und senden Sie unterschriebene Vereinbarungen zurück, ganz ohne Drucken und Scannen.',
+    'usecases.u2.title': 'Anträge & Steuerformulare',
+    'usecases.u2.desc': 'Füllen Sie Behördenformulare, Anträge und Personalbögen ordentlich aus, auch wenn die PDF-Datei keine ausfüllbaren Formularfelder besitzt.',
+    'usecases.u3.title': 'Finanz- & Privatdokumente',
+    'usecases.u3.desc': 'Schwärzen Sie Kontonummern, Adressen oder persönliche Angaben auf Kontoauszügen und Gehaltsabrechnungen sicher direkt auf Ihrem eigenen Rechner.',
+    'usecases.u4.title': 'Studiennotizen & Arbeitsblätter',
+    'usecases.u4.desc': 'Markieren Sie Texte, ergänzen Sie handschriftliche Notizen, bearbeiten Sie Aufgabenblätter und entfernen Sie überflüssige Seiten in jedem modernen Browser.',
 
     // FAQ
     'faq.title': 'Häufig gestellte Fragen',
@@ -311,6 +473,12 @@ export const ui = {
     'faq.a2': 'Ja, Sie können Ihre Unterschrift zeichnen, mit verschiedenen Schriftarten eintippen oder ein Bild hochladen. Anschließend lässt sie sich frei skalieren und platzieren.',
     'faq.q3': 'Muss ich ein Benutzerkonto erstellen?',
     'faq.a3': 'Nein, EditPDF ist sofort und kostenlos nutzbar. Es sind keine Konten, Abonnements oder versteckte Gebühren erforderlich.',
+    'faq.q4': 'Fügt EditPDF ein Wasserzeichen in das heruntergeladene PDF ein?',
+    'faq.a4': 'Niemals. Ihr exportiertes PDF enthält ausschließlich Ihr Originaldokument und Ihre Änderungen, komplett ohne Wasserzeichen oder Tageslimits.',
+    'faq.q5': 'Kann ich auch gescannte oder nicht interaktive PDF-Formulare ausfüllen?',
+    'faq.a5': 'Ja. Selbst bei gescannten Dokumenten ohne Formularfelder klicken Sie einfach mit Text hinzufügen auf die gewünschte Zeile und nutzen Häkchen oder Kreuz für Kästchen.',
+    'faq.q6': 'Funktioniert der Editor auf Windows, Mac und Mobilgeräten?',
+    'faq.a6': 'Ja. EditPDF läuft direkt in modernen Browsern wie Chrome, Safari, Firefox und Edge unter Windows, macOS, Linux, iOS und Android ohne Software-Installation.',
 
     // Footer
     'footer.text': 'Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser.',
@@ -379,18 +547,54 @@ export const ui = {
     'nav.selectLanguage': 'Choisir la langue',
 
     // SEO Meta
-    'seo.title': 'Éditeur PDF et Remplisseur de Formulaires Gratuit en Ligne | Sécurisé, Sans Téléchargement',
-    'seo.description': 'Modifiez des fichiers PDF, remplissez des formulaires et signez instantanément dans votre navigateur. 100 % gratuit et sécurisé – vos fichiers ne quittent jamais votre appareil.',
-    'seo.ogTitle': 'Éditeur PDF et Remplisseur de Formulaires Gratuit en Ligne | Sécurisé, Sans Téléchargement',
+    'seo.title': 'Éditeur PDF et Remplisseur de Formulaires Gratuit en Ligne | Sécurisé, Sans Téléversement',
+    'seo.description': 'Modifiez des fichiers PDF, remplissez des formulaires et signez instantanément dans votre navigateur. 100 % gratuit et sécurisé, sans aucun envoi vers un serveur.',
+    'seo.ogTitle': 'Éditeur PDF et Remplisseur de Formulaires Gratuit en Ligne | Sécurisé, Sans Téléversement',
 
     // Hero Section
-    'hero.h1': 'Éditeur PDF Sécurisé et Gratuit – Remplissez et Signez Instantanément',
+    'hero.h1': 'Éditeur PDF Sécurisé et Gratuit - Remplissez et Signez Instantanément',
     'hero.subtitle': 'Modifiez vos fichiers PDF sans les téléverser sur aucun serveur. Tout est traité localement dans votre navigateur.',
 
-    // How It Works
-    'how.title': 'Comment fonctionne notre éditeur PDF sécurisé',
-    'how.p1': 'Vous souhaitez remplir vos formulaires PDF facilement tout en préservant votre confidentialité ? Notre éditeur gratuit vous permet d’ajouter du texte, de dessiner des signatures et de compléter vos documents en un clin d’œil.',
-    'how.p2': 'La plupart des outils en ligne vous forcent à envoyer vos documents confidentiels (relevés bancaires, contrats) sur leurs serveurs. Notre approche est différente : tout fonctionne directement sur votre machine via les technologies web actuelles, sans aucun transfert de fichier.',
+    // Features Section
+    'features.title': 'Tout ce qu’il Faut pour Modifier un PDF dans Votre Navigateur',
+    'features.subtitle': 'Des outils simples et rapides pour vos documents du quotidien, sans filigrane ni création de compte.',
+    'features.f1.title': 'Remplissez vos Formulaires et Ajoutez du Texte',
+    'features.f1.desc': 'Cliquez n’importe où sur la page pour saisir du texte, choisir la taille de police et activer le gras ou l’italique. Idéal pour les formulaires non interactifs, baux et factures.',
+    'features.f2.title': 'Signez vos Documents à Votre Façon',
+    'features.f2.desc': 'Créez une signature électronique en la traçant à la souris ou au doigt, en la tapant dans une police manuscrite ou en important une image. Redimensionnez-la et placez-la facilement.',
+    'features.f3.title': 'Surlignez, Effacez et Masquez',
+    'features.f3.desc': 'Mettez en valeur les passages importants avec plusieurs couleurs de surlignage, corrigez une erreur au correcteur blanc ou masquez des données privées avec un bloc noir.',
+    'features.f4.title': 'Coches, Tampons et Annotations Manuscrites',
+    'features.f4.desc': 'Ajoutez des coches ou des croix nettes dans les cases de formulaire, annotez à main levée ou apposez un tampon Approuvé, Confidentiel, Brouillon ou personnalisé.',
+    'features.f5.title': 'Organisez, Réordonnez et Supprimez des Pages',
+    'features.f5.desc': 'Passez en vue Organiser pour visualiser l’ensemble des miniatures. Glissez-déposez les pages dans le bon ordre ou supprimez les feuilles inutiles avant l’export.',
+    'features.f6.title': 'Zéro Téléversement et Mode Confort Visuel',
+    'features.f6.desc': 'Chaque action s’exécute localement dans votre onglet afin que vos documents restent sur votre appareil. Activez le Mode Confort Visuel pour adoucir les pages blanches le soir.',
+
+    // How It Works & Steps
+    'how.title': 'Comment Modifier un PDF en Ligne Sans le Téléverser',
+    'how.subtitle': 'Finalisez vos démarches en trois étapes simples, depuis un ordinateur, une tablette ou un téléphone.',
+    'how.step1.title': 'Ouvrez Votre Fichier PDF',
+    'how.step1.desc': 'Sélectionnez un PDF sur votre appareil. Le document s’ouvre directement dans la mémoire de votre navigateur sans jamais être envoyé sur un serveur distant.',
+    'how.step2.title': 'Remplissez, Signez et Annotez',
+    'how.step2.desc': 'Utilisez la barre d’outils pour taper du texte, ajouter votre signature, cocher des cases, apposer des tampons, masquer des informations ou réorganiser les pages.',
+    'how.step3.title': 'Téléchargez Proprement et Instantanément',
+    'how.step3.desc': 'Cliquez sur Télécharger le PDF pour enregistrer votre fichier mis à jour directement sur votre appareil. Sans filigrane, sans limite de pages et sans adresse e-mail.',
+    'how.privacyTitle': 'Pourquoi le Traitement Local Protège Mieux vos Fichiers',
+    'how.p1': 'Vous souhaitez remplir vos formulaires PDF facilement tout en préservant votre confidentialité ? Notre éditeur gratuit vous permet d’ajouter du texte, de dessiner des signatures, de surligner des passages et de compléter vos documents en un clin d’œil.',
+    'how.p2': 'La plupart des outils en ligne vous obligent à envoyer vos documents confidentiels (relevés bancaires, avis d’imposition, contrats) sur leurs serveurs distants. Notre approche est différente : tout fonctionne directement sur votre machine grâce aux technologies web modernes, sans aucun transfert de fichier.',
+
+    // Use Cases Section
+    'usecases.title': 'Conçu pour vos Documents du Quotidien',
+    'usecases.subtitle': 'De la signature d’un contrat à la préparation de fiches de cours, EditPDF reste rapide et confidentiel.',
+    'usecases.u1.title': 'Contrats et Accords',
+    'usecases.u1.desc': 'Relisez vos documents, ajoutez la date et votre signature, puis renvoyez vos accords signés en quelques secondes sans imprimer ni scanner.',
+    'usecases.u2.title': 'Dossiers et Formulaires Administratifs',
+    'usecases.u2.desc': 'Remplissez proprement vos formulaires administratifs, demandes de visa et fiches RH, même lorsque le PDF d’origine ne contient aucun champ cliquable.',
+    'usecases.u3.title': 'Justificatifs et Documents Financiers',
+    'usecases.u3.desc': 'Masquez vos numéros de compte, adresses ou pièces d’identité sur vos relevés bancaires et fiches de paie directement sur votre appareil avant de les partager.',
+    'usecases.u4.title': 'Notes d’Étude et Exercices',
+    'usecases.u4.desc': 'Surlignez vos cours, ajoutez des annotations rapides à main levée, complétez des fiches d’exercices et retirez les pages superflues depuis n’importe quel navigateur.',
 
     // FAQ
     'faq.title': 'Foire Aux Questions',
@@ -400,6 +604,12 @@ export const ui = {
     'faq.a2': 'Oui, vous pouvez tracer votre signature, la saisir au clavier avec différentes polices ou importer une image. Il suffit ensuite de la redimensionner et de la placer où vous le souhaitez.',
     'faq.q3': 'Faut-il créer un compte ?',
     'faq.a3': 'Non, EditPDF est gratuit et accessible sans inscription, sans abonnement et sans frais cachés.',
+    'faq.q4': 'EditPDF ajoute-t-il un filigrane sur le PDF téléchargé ?',
+    'faq.a4': 'Jamais. Votre PDF exporté ne contient que votre document d’origine et vos modifications, sans aucun filigrane ni quota quotidien.',
+    'faq.q5': 'Puis-je remplir un formulaire PDF scanné ou non interactif ?',
+    'faq.a5': 'Oui. Même si votre PDF a été numérisé sans champs de formulaire intégrés, cliquez où vous le souhaitez avec l’outil Ajouter du texte et utilisez Coche ou Croix pour les cases.',
+    'faq.q6': 'L’outil fonctionne-t-il sur Windows, Mac et mobile ?',
+    'faq.a6': 'Oui. EditPDF fonctionne directement dans les navigateurs modernes tels que Chrome, Safari, Firefox et Edge sur Windows, macOS, Linux, iOS et Android, sans logiciel à installer.',
 
     // Footer
     'footer.text': 'L’ensemble du traitement est effectué localement dans votre navigateur.',
@@ -476,10 +686,46 @@ export const ui = {
     'hero.h1': '安全な無料PDFエディター - フォーム入力・電子署名を瞬時に',
     'hero.subtitle': 'ファイルをサーバーにアップロードすることなくPDFを直接編集。すべての処理はお使いのブラウザ内で完結します。',
 
-    // How It Works
-    'how.title': '当PDFエディターの安全な仕組み',
-    'how.p1': 'プライバシーを犠牲にすることなく、手軽にPDFフォームを編集しませんか？ テキスト追加、手書き署名、各種書類への記入がブラウザ上で今すぐ行えます。',
-    'how.p2': '一般的なオンラインPDFツールは、銀行取引明細書や契約書などの機密ファイルを外部サーバーにアップロードさせる仕様がほとんどです。本ツールはブラウザの最新技術を活用し、お使いのデバイス上だけで完結するため、情報漏洩のリスクがありません。',
+    // Features Section
+    'features.title': 'ブラウザだけで完結するPDF編集機能',
+    'features.subtitle': '透かしなし・会員登録不要で、日々の書類作業をすばやく快適にこなせるツールを揃えています。',
+    'features.f1.title': 'フォーム入力・自由なテキスト追加',
+    'features.f1.desc': 'PDF上の任意の場所をクリックして文字を入力でき、フォントサイズや太字・斜体も調整可能です。入力欄のない申請書、契約書、請求書への記入に最適です。',
+    'features.f2.title': '選べる3種類の電子署名',
+    'features.f2.desc': 'マウスやタッチ操作での手書き、筆記体フォントでの文字入力、または署名画像のアップロードに対応。追加後は書類上の好きな位置へドラッグやサイズ調整ができます。',
+    'features.f3.title': '蛍光ペン・白塗り修正・黒塗り墨消し',
+    'features.f3.desc': '重要な箇所を複数色の蛍光ペンでハイライトしたり、白塗りで誤記を隠したり、黒塗り機能で機密情報をしっかり伏せることができます。',
+    'features.f4.title': 'チェックマーク・スタンプ・手書きメモ',
+    'features.f4.desc': 'チェックボックスにきれいなチェック印やバツ印を配置できるほか、フリーハンドでのメモ書きや「承認済み」「親展」「下書き」「カスタム」スタンプも押せます。',
+    'features.f5.title': 'ページの並べ替え・不要ページの削除',
+    'features.f5.desc': 'ページ整理モードに切り替えると全ページをサムネイル一覧で確認可能。ドラッグ＆ドロップで順序を入れ替えたり、白紙ページを削除して書き出せます。',
+    'features.f6.title': 'サーバー送信なし＆アイケアモード',
+    'features.f6.desc': '編集はすべてお使いのブラウザのタブ内で完結するため、大切な書類が端末の外に出ません。夜間の作業時はアイケアモードで画面の眩しさを抑えられます。',
+
+    // How It Works & Steps
+    'how.title': 'サーバー送信なしでPDFを編集する3ステップ',
+    'how.subtitle': 'パソコンやスマートフォンのブラウザから、シンプルな3手順で書類を仕上げられます。',
+    'how.step1.title': 'PDFファイルを開く',
+    'how.step1.desc': 'お使いのパソコンやスマホからPDFを選択します。ファイルはブラウザ内のメモリに直接読み込まれ、外部サーバーへ送信されることはありません。',
+    'how.step2.title': '記入・署名・注釈を追加',
+    'how.step2.desc': 'ツールバーからテキスト追加、電子署名、チェックマーク、スタンプ、墨消し、またはページ整理モードでの並べ替えを行います。',
+    'how.step3.title': '透かしなしですぐに保存',
+    'how.step3.desc': '「PDFをダウンロード」をクリックすると編集済みファイルが端末に直接保存されます。透かし・ページ制限・メールアドレス登録は一切不要です。',
+    'how.privacyTitle': 'ローカル処理がプライバシーを守る理由',
+    'how.p1': 'プライバシーを犠牲にすることなく、手軽にPDFフォームを編集しませんか？ テキスト追加、手書き署名、蛍光ペンでの強調、各種書類への記入がブラウザ上で今すぐ行えます。',
+    'how.p2': '一般的なオンラインPDFツールは、銀行取引明細書、確定申告書、契約書などの機密ファイルを外部サーバーにアップロードさせる仕様がほとんどです。本ツールはブラウザの最新技術を活用し、お使いのデバイス上だけで処理が完結するため、情報漏洩のリスクなく安心してご利用いただけます。',
+
+    // Use Cases Section
+    'usecases.title': 'さまざまな書類シーンで活躍',
+    'usecases.subtitle': 'ビジネス契約から学校のプリント提出まで、印刷やスキャンの手間を省いて安全に処理できます。',
+    'usecases.u1.title': '契約書・同意書への署名',
+    'usecases.u1.desc': '内容を確認して日付と署名を記入し、印刷やスキャンをせずに数秒で署名済みPDFを返送できます。',
+    'usecases.u2.title': '申請書・各種手続きフォーム',
+    'usecases.u2.desc': '入力フォームが埋め込まれていない行政書類や入社手続き書類でも、見やすく整った文字で直接記入できます。',
+    'usecases.u3.title': '金融書類・個人情報の保護',
+    'usecases.u3.desc': '明細書の口座番号や住所、本人確認書類の機密部分を、外部に送信することなく自分の端末上で安全に墨消しできます。',
+    'usecases.u4.title': '学習ノート・配布プリント',
+    'usecases.u4.desc': '資料のハイライト、手書きメモの記入、課題シートの回答作成、余分なページの削除をあらゆるモダンブラウザで行えます。',
 
     // FAQ
     'faq.title': 'よくあるご質問（FAQ）',
@@ -489,6 +735,12 @@ export const ui = {
     'faq.a2': 'はい、マウスやタッチ操作での手書き入力、お好みのフォントでのテキスト入力、または署名画像のアップロードに対応しています。追加後はサイズ変更や移動も自由自在です。',
     'faq.q3': 'アカウント登録は必要ですか？',
     'faq.a3': 'いいえ、EditPDFは会員登録やサブスクリプション、追加料金なしでどなたでもすぐにご利用いただけます。',
+    'faq.q4': 'ダウンロードしたPDFに透かし（ウォーターマーク）は入りますか？',
+    'faq.a4': 'いいえ、透かしは一切入りません。元の書類とご自身の編集内容だけがそのまま保存され、1日の利用回数制限もありません。',
+    'faq.q5': 'スキャンしたPDFや入力欄のないフォームにも記入できますか？',
+    'faq.a5': 'はい。フォーム機能が設定されていないPDFやスキャン書類でも、「テキスト追加」で好きな位置に文字を入力し、チェックマークやバツ印を配置できます。',
+    'faq.q6': 'Windows、Mac、スマートフォンでも使えますか？',
+    'faq.a6': 'はい。Chrome、Safari、Firefox、Edgeなどのモダンブラウザに対応しており、Windows、macOS、Linux、iOS、Androidでソフトのインストールなしにご利用いただけます。',
 
     // Footer
     'footer.text': 'すべての処理はお使いのブラウザ内でローカルに実行されます。',

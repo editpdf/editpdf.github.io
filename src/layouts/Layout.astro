@@ -11,11 +11,26 @@ interface Props {
 
 const currentLang: Locale = Astro.props.lang || getLangFromUrl(Astro.url);
 const title = Astro.props.title || 'Free Online PDF Editor & Form Filler | Secure, No Uploads';
-const description = Astro.props.description || 'Edit PDF files, fill forms, and add signatures instantly in your browser. 100% free and secure - your files are never uploaded to any server.';
+const description = Astro.props.description || 'Edit PDF files, fill forms, and add signatures instantly in your browser. 100% free and secure, with zero server uploads and no account required.';
 
 const siteBase = 'https://editpdf.github.io';
+const ogImage = 'https://res.cloudinary.com/dpx6w78bt/image/upload/f_auto/q_auto/v1786342039/Online_Tool_rc1ybr.png';
 const translatePath = useTranslatedPath(currentLang);
 const canonicalUrl = new URL(translatePath(''), siteBase).href;
+
+const ogLocaleMap: Record<Locale, string> = {
+	en: 'en_US',
+	es: 'es_ES',
+	pt: 'pt_BR',
+	de: 'de_DE',
+	fr: 'fr_FR',
+	ja: 'ja_JP',
+};
+
+const currentOgLocale = ogLocaleMap[currentLang];
+const alternateOgLocales = (Object.keys(languages) as Locale[])
+	.filter((loc) => loc !== currentLang)
+	.map((loc) => ogLocaleMap[loc]);
 
 // 7 bidirectional hreflang links (en, es, pt, de, fr, ja + x-default)
 const hreflangLinks = [
@@ -38,6 +53,7 @@ const hreflangLinks = [
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#dc2626" />
 		<meta name="google-site-verification" content="VcuzgKAUM7X1Jrj8eB91qjYDEOPZ-v0OZdluF9pyL-4" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={canonicalUrl} />
@@ -65,17 +81,23 @@ const hreflangLinks = [
 
 		{/* Open Graph / Facebook */}
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="EditPDF" />
+		<meta property="og:locale" content={currentOgLocale} />
+		{alternateOgLocales.map((loc) => (
+			<meta property="og:locale:alternate" content={loc} />
+		))}
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="https://res.cloudinary.com/dpx6w78bt/image/upload/f_auto/q_auto/v1786342039/Online_Tool_rc1ybr.png" />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content={title} />
 
 		{/* Twitter */}
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalUrl} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content="https://res.cloudinary.com/dpx6w78bt/image/upload/f_auto/q_auto/v1786342039/Online_Tool_rc1ybr.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 
 		{/* Google tag (gtag.js) */}
 		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4N8MGZF1YQ"></script>
